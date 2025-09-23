@@ -1,2 +1,2 @@
 # CRCP3320
-Notes and examples : Emergent Web Development course - Fall 2025
+Final Project : Emergent Web Development course - Fall 2025
