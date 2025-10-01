@@ -13,10 +13,10 @@ app.get("/", (req, res) => {
 });
 
 //connect to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/quakescope", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect("mongodb+srv://agsutton_db_user:Mi2hermanas$$@quakescope.0uesbu2.mongodb.net/?retryWrites=true&w=majority&appName=QuakeScope")
+  .then(() => console.log(" ✅Connected to MongoDB Atlas"))
+  .catch(err => console.error(" MongoDB connection error:", err));
+
 
 //Define a schema
 const earthquakeSchema = new mongoose.Schema({
