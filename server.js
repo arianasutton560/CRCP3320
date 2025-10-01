@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 
 //connect to MongoDB
 mongoose.connect("mongodb+srv://agsutton_db_user:Mi2hermanas$$@quakescope.0uesbu2.mongodb.net/?retryWrites=true&w=majority&appName=QuakeScope")
-  .then(() => console.log(" ✅Connected to MongoDB Atlas"))
+  .then(() => console.log("✅ Connected to MongoDB Atlas"))
   .catch(err => console.error(" MongoDB connection error:", err));
 
 
@@ -40,32 +40,33 @@ app.get("/", (req, res) => {
 //Fetch and save earthquakes
 app.get("/earthquakes/update", async (req, res) => {
   try {
-    const url = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson";
-    const response = await axios.get(url);
+    const response = await fetch(
+      "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson"
+    );
+    const data = await response.json();
 
-    const earthquakes = response.data.features.map(eq => ({
-      id: eq.id,
-      place: eq.properties.place,
-      magnitude: eq.properties.mag,
-      time: new Date(eq.properties.time),
-      coordinates: eq.geometry.coordinates // [longitude, latitude, depth]
+    const earthquakes = data.features.map((feature) => ({
+      place: feature.properties.place,
+      magnitude: feature.properties.mag,
+      time: new Date(feature.properties.time),
+      coordinates: feature.geometry.coordinates,
     }));
-    //insert into MongoDB
-    for(const quake of earthquakes){
-      await Earthquake.updateOne({id: quake.id}, quake, {upsert: true});
-    }
 
+    await Earthquake.insertMany(earthquakes);
     res.json({ message: "Earthquakes updated", count: earthquakes.length });
-  }catch(error){
-    console.error("Error fetching earthquakes:", error);
-    res.status(500).json({ error: "Failed to fetch earthquake data" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
 //Retrieve stored earthquakes
 app.get("/earthquakes", async (req, res) => {
-  const quakes = await Earthquake.find().sort({ time: -1 }).limit(50);
-  res.json(quakes);
+  try {
+    const quakes = await Earthquake.find().limit(20); // just show 20 for now
+    res.json(quakes);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 
