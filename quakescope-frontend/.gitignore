@@ -21,3 +21,14 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Node modules
+quakescope-backend/node_modules/
+quakescope-frontend/node_modules/
+
+# React build
+quakescope-frontend/build/
+
+# Environment variables
+quakescope-backend/.env
+quakescope-frontend/.env
