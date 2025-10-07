@@ -1,41 +1,26 @@
-import React, { useEffect, useState } from "react";
+// This file holds the links to your different pages
+
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import VisualData from "./pages/VisualData"; 
 
 function App() {
-  const [quakes, setQuakes] = useState([]);
-
-  useEffect(() => {
-    fetch("http://localhost:3000/earthquakes")
-      .then((res) => res.json())
-      .then((data) => setQuakes(data))
-      .catch((err) => console.error("Error fetching quakes:", err));
-  }, []);
-
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>🌍 QuakeScope</h1>
-      <h2>Recent Earthquakes</h2>
+    <Router>
+      <nav>
+        <Link to="/">Home</Link> | <Link to="/about">About</Link> | <Link to="/visualdata">Visual Data</Link>
+      </nav>
 
-      <table border="1" cellPadding="8" style={{ borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th>Location</th>
-            <th>Magnitude</th>
-            <th>Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          {quakes.map((quake) => (
-            <tr key={quake._id}>
-              <td>{quake.place}</td>
-              <td>{quake.magnitude}</td>
-              <td>{new Date(quake.time).toLocaleString()}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/visualdata" element={<VisualData />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
 
