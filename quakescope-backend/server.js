@@ -1,3 +1,5 @@
+//This file holds javascript for your backend server
+
 const express = require("express");
 const axios = require("axios");
 const mongoose = require("mongoose"); //MongoDB
