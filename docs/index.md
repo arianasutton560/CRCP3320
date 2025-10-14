@@ -6,6 +6,6 @@ The backend, handles the API requests and data processing from USGS earthquake c
 
 This project demonstrates skills in full-stack web development, data visualization, and the integration of real-world geospatial data through APIs.
 
-
+# Bio
 
 Hello, my name is Ariana and I am a Junior at Southern Methodist University learning how to create web applications. I intend to major in Creative Computation and minor in Computer Science when I graduate. On the side, I am also a student athlete running for the Track & Field team. My passion is art and drawing, I watch sci-fi/horror movies on my free time.
