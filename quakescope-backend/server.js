@@ -66,8 +66,17 @@ app.get("/earthquakes/update", async (req, res) => {
 //Retrieve stored earthquakes
 app.get("/earthquakes", async (req, res) => {
   try {
-    const quakes = await Earthquake.find().limit(20); // just show 20 for now
-    res.json(quakes);
+        const quakes = await Earthquake.find().limit(20);
+        const formatted = quakes.map(q => ({
+        _id: q._id,
+        place: q.place,
+        magnitude: q.magnitude,
+        time: q.time,
+        latitude: q.coordinates[1],
+        longitude: q.coordinates[0],
+      }));
+      res.json(formatted);
+
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
