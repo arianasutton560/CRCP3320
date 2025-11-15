@@ -1,4 +1,4 @@
-//This file holds javascript for your backend server
+//This file holds javascript for my backend server
 
 const express = require("express");
 const axios = require("axios");
@@ -18,7 +18,7 @@ app.get("/", (req, res) => {
 
 //connect to MongoDB
 mongoose.connect("mongodb+srv://agsutton_db_user:Mi2hermanas$$@quakescope.0uesbu2.mongodb.net/?retryWrites=true&w=majority&appName=QuakeScope")
-  .then(() => console.log("✅ Connected to MongoDB Atlas"))
+  .then(() => console.log("Connected to MongoDB Atlas"))
   .catch(err => console.error(" MongoDB connection error:", err));
 
 
@@ -84,5 +84,5 @@ app.get("/earthquakes", async (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`✅ Server running at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });
