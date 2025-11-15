@@ -67,6 +67,55 @@ function Home() {
                 border: "1px solid #333",
               }}
             >
+              <h3>Map Legend</h3>
+<div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+    marginBottom: "20px",
+  }}
+>
+  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+    <span
+      style={{
+        width: "14px",
+        height: "14px",
+        borderRadius: "50%",
+        backgroundColor: "green",
+        display: "inline-block",
+      }}
+    ></span>
+    <span>Minor earthquakes (magnitude &lt; 4.0)</span>
+  </div>
+
+  <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+    <span
+      style={{
+        width: "14px",
+        height: "14px",
+        borderRadius: "50%",
+        backgroundColor: "orange", // you can change this to "yellow" if you want
+        display: "inline-block",
+      }}
+      ></span>
+      <span>Moderate earthquakes (magnitude 4.0 – 5.9)</span>
+    </div>
+
+      <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <span
+            style={{
+              width: "14px",
+              height: "14px",
+              borderRadius: "50%",
+              backgroundColor: "red",
+              display: "inline-block",
+            }}
+          ></span>
+          <span>Severe earthquakes (magnitude 6.0+)</span>
+        </div>
+      </div>
+
               View Visual Data
             </a>
 
