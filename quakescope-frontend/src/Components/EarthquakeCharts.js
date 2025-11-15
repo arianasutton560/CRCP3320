@@ -44,7 +44,7 @@ const EarthquakeCharts = () => {
         justifyContent: 'center',
         alignItems: 'flex-start',
         gap: '40px',
-        flexWrap: 'wrap', // ✅ makes it responsive
+        flexWrap: 'wrap',
         marginTop: '40px',
       }}
     >
